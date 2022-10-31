@@ -1,6 +1,7 @@
 import axios from "axios"
 
-let baseURL = "http://localhost:9000"
+// let baseURL = "http://localhost:9000"
+let baseURL = "http://197.54.238.177:9001"
 // let baseURL = "http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000"
 
 // deprecated

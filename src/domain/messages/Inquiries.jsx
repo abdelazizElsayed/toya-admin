@@ -36,6 +36,7 @@ function Inquiries() {
     }
 
     const [modalShow, setModalShow] = useState(false);
+    const [messageId, setMessageId] = useState("");
 
     return (
         <>
@@ -72,32 +73,30 @@ function Inquiries() {
                                 </td>
                                 <td class="wrap">{m.body}</td>
                                 <td >
-                                    <img src={m.attachment} alt="attachment" className='w-1/6' />
-                                    {m.attachment}</td>
+                                    <img src={m.attachment} alt="attachment" className='w-11' />
+                                </td>
                                 <td role={"button"}
                                     onClick={() => {
                                         deleteMessage(m.id)
                                     }}><TrashIcon /></td>
-                                <td onClick={() => setModalShow(true)}><EyeIcon /></td>
-
-                                {/* Model */}
-                                <MyVerticallyCenteredModal
-                                    thumbnail={m.attachment}
-                                    userName={m.name}
-                                    email={m.email}
-                                    phoneNumber={m.phoneNumber}
-                                    message={m.body}
-                                    show={modalShow}
-                                    onHide={() => setModalShow(false)}
-                                />
+                                <td role={"button"}
+                                    onClick={() => {
+                                        setModalShow(true)
+                                        setMessageId(m.id)
+                                    }}>
+                                    <EyeIcon />
+                                </td>
                             </tr>
                             : ""
-
                     ))}
-
                 </tbody>
             </table>
-
+            {/* Model */}
+            <MyVerticallyCenteredModal
+                id={messageId}
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
         </>
     )
 }
